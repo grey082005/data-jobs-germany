@@ -9,3 +9,6 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Labelling page contains full ad texts: keep it local
+labelling/label_tool.html
