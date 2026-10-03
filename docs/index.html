@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Jobs Germany</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: one calm column of soft cards — headline numbers, then the skill comparison with its difference chart beside it, then roles and seniority. */
+:root {
+  --bg: #f5f6fb;
+  --card: #ffffff;
+  --ink: #1d2033;
+  --ink-2: #4e5370;
+  --muted: #8a8ea6;
+  --line: #e7e8f1;
+  --track: #f0f1f8;
+  --en: #6e80ee;          /* English postings: periwinkle */
+  --de: #ef8f6b;          /* German postings: coral */
+  --en-soft: #e6e9fd;
+  --de-soft: #fde8df;
+  --seq-1: #d9ddfb; --seq-2: #b3bbf6; --seq-3: #8d9af1; --seq-4: #5f6fd9;
+  --focus: #5f6fd9;
+  --quiet: #c9ccdc;      /* bars that are context, not the point */
+  --shadow: 0 1px 2px rgba(29, 32, 51, .04), 0 8px 24px rgba(29, 32, 51, .05);
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --r: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14151f; --card: #1c1e2b; --ink: #eef0fa; --ink-2: #b9bdd4; --muted: #8288a6;
+    --line: #2b2e40; --track: #262838; --en: #7685f2; --de: #dc6f5c; --en-soft: #2a2f55; --de-soft: #43292a;
+    --seq-1: #2f3561; --seq-2: #46509a; --seq-3: #6170d6; --seq-4: #9aa5f7; --focus: #9aa5f7; --quiet: #4a4e66;
+    --shadow: 0 1px 2px rgba(0,0,0,.3); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14151f; --card: #1c1e2b; --ink: #eef0fa; --ink-2: #b9bdd4; --muted: #8288a6;
+  --line: #2b2e40; --track: #262838; --en: #7685f2; --de: #dc6f5c; --en-soft: #2a2f55; --de-soft: #43292a;
+  --seq-1: #2f3561; --seq-2: #46509a; --seq-3: #6170d6; --seq-4: #9aa5f7; --focus: #9aa5f7; --quiet: #4a4e66;
+  --shadow: 0 1px 2px rgba(0,0,0,.3); color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; padding-inline: 20px; padding-block: 36px 48px; }
+.wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 20px; }
+h1, h2 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 700; line-height: 1.05; }
+h2 { font-size: 20px; font-weight: 600; }
+p { margin: 0; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--en); }
+.sub { color: var(--ink-2); max-width: 62ch; margin-top: 10px; }
+.num { font-variant-numeric: tabular-nums; }
+
+header { display: grid; gap: 4px; padding-bottom: 8px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip { font-size: 12.5px; color: var(--ink-2); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+
+.card { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); padding: 22px; min-width: 0; }
+.card-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.card-head p { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+
+/* Headline numbers */
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.kpi { display: grid; gap: 6px; align-content: start; }
+.kpi .big { font-family: var(--display); font-size: 40px; font-weight: 700; line-height: 1; }
+.kpi .big small { font-size: 18px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+.kpi .label { font-size: 13.5px; color: var(--ink-2); }
+.kpi .split { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.pill { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 2px 9px; }
+.pill.en { background: var(--en-soft); color: var(--ink); }
+.pill.de { background: var(--de-soft); color: var(--ink); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; }
+.dot.en { background: var(--en); } .dot.de { background: var(--de); }
+
+/* Skill chart */
+.main { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; }
+.seg { display: inline-flex; background: var(--track); border-radius: 999px; padding: 4px; gap: 2px; }
+.seg button { font: inherit; font-size: 13px; font-weight: 600; color: var(--ink-2); background: none; border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(29,32,51,.12); }
+.seg button:focus-visible, summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.legend { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); margin-bottom: 10px; }
+
+.skills { display: grid; gap: 2px; }
+.row { display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; gap: 14px; padding: 6px 8px; border-radius: 10px; position: relative; }
+.row:hover { background: var(--track); }
+.row .name { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.25; }
+.bars { display: grid; gap: 3px; }
+.bar { display: flex; align-items: center; gap: 8px; height: 11px; }
+.bar i { display: block; height: 100%; border-radius: 999px; width: 0; transition: width .6s cubic-bezier(.2,.8,.2,1); }
+.bar.en i { background: var(--en); } .bar.de i { background: var(--de); }
+.bar span { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 30px; }
+.bar[hidden] { display: none; }
+.skills.single .bar { height: 16px; }
+
+.tip { position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--card); font-size: 12.5px; line-height: 1.45; border-radius: 10px; padding: 8px 11px; box-shadow: 0 6px 20px rgba(0,0,0,.18); opacity: 0; transition: opacity .12s; max-width: 240px; }
+.tip b { font-weight: 600; }
+.tip.on { opacity: 1; }
+
+/* Gap view */
+.diverge { width: 100%; height: auto; display: block; overflow: visible; }
+.diverge text { font-family: var(--body); fill: var(--ink-2); font-size: 12px; }
+.diverge .lbl { fill: var(--ink); font-size: 13.5px; }
+.diverge .val { fill: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
+.diverge .tick { fill: var(--muted); font-size: 11.5px; }
+.diverge .side { fill: var(--ink-2); font-size: 12.5px; font-weight: 600; }
+.diverge .grid { stroke: var(--line); stroke-width: 1; }
+.diverge .zero { stroke: var(--ink-2); stroke-width: 1.25; }
+.diverge .b-en { fill: var(--en); } .diverge .b-de { fill: var(--de); }
+.diverge .hit { fill: transparent; cursor: default; }
+.diverge .hit:hover, .diverge .hit:focus { fill: var(--track); outline: none; }
+.d-dot-en { fill: var(--en); } .d-dot-de { fill: var(--de); }
+
+/* Roles and levels */
+.lower { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.hbars { display: grid; gap: 10px; }
+.hbar { display: grid; grid-template-columns: 150px minmax(0, 1fr) 34px; align-items: center; gap: 12px; font-size: 13.5px; }
+.hbar .t { height: 12px; background: var(--track); border-radius: 999px; overflow: hidden; }
+.hbar .t i { display: block; height: 100%; background: var(--seq-3); border-radius: 999px; }
+.hbar b { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+.levels { display: grid; gap: 14px; }
+.lvl-group { display: grid; gap: 10px; padding-left: 16px; }   /* same inset for both groups, so all bars share one scale */
+.lvl-group.entry { position: relative; padding-block: 12px; }
+.lvl-group.entry::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 8px; border: 2px solid var(--en); border-right: 0; border-radius: 6px 0 0 6px; }
+.lvl-tag { font-size: 13px; color: var(--ink-2); }
+.lvl-tag b { color: var(--ink); font-weight: 600; }
+.lvl { display: grid; grid-template-columns: 170px minmax(0, 1fr) 30px 40px; align-items: center; gap: 12px; font-size: 13.5px; }
+.lvl .t { height: 12px; background: var(--track); border-radius: 999px; overflow: hidden; }
+.lvl .t i { display: block; height: 100%; border-radius: 999px; background: var(--quiet); }
+.lvl.hi .t i { background: var(--en); }
+.lvl b { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+.lvl .pct { color: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.lvl-note { font-size: 13.5px; color: var(--ink-2); margin-top: 4px; }
+
+details { font-size: 13.5px; color: var(--ink-2); }
+summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.tbl { overflow-x: auto; margin-top: 12px; }
+table { border-collapse: collapse; width: 100%; min-width: 420px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; color: var(--ink); }
+td:not(:first-child), th:not(:first-child) { text-align: right; }
+footer { color: var(--muted); font-size: 12.5px; max-width: 75ch; display: grid; gap: 6px; }
+
+@media (max-width: 900px) {
+  .main, .lower { grid-template-columns: minmax(0, 1fr); }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  body { padding-inline: 16px; padding-block: 24px 36px; }
+  .row { grid-template-columns: 116px minmax(0, 1fr); gap: 10px; }
+  .row .name { font-size: 13px; }
+  .hbar { grid-template-columns: 112px minmax(0, 1fr) 30px; }
+  .lvl { grid-template-columns: 104px minmax(0, 1fr) 26px 34px; gap: 8px; }
+  .kpi .big { font-size: 32px; }
+  .card { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Job market tracker</span>
+    <h1>What data jobs in Germany ask for</h1>
+    <p class="sub"><span id="n-jobs"></span> data roles posted on the Arbeitnow job board, split by the language the ad was written in. For international applicants, the language of an ad turns out to say a lot about the job.</p>
+    <div class="meta">
+      <span class="chip" id="chip-date"></span>
+      <span class="chip" id="chip-lang"></span>
+      <span class="chip" id="chip-skills"></span>
+    </div>
+  </header>
+
+  <section class="card kpis" aria-label="Headline numbers">
+    <div class="kpi">
+      <div class="big num" id="k1"></div>
+      <div class="label" id="k1-label"></div>
+    </div>
+    <div class="kpi">
+      <div class="big num" id="k2"></div>
+      <div class="label">of English ads require German</div>
+      <div class="split"><span class="pill de" id="k2-pill"></span></div>
+    </div>
+    <div class="kpi">
+      <div class="big num" id="k3"></div>
+      <div class="label" id="k3-label"></div>
+    </div>
+    <div class="kpi">
+      <div class="big num" id="k4"></div>
+      <div class="label" id="k4-label"></div>
+    </div>
+  </section>
+
+  <div class="main">
+    <section class="card" aria-labelledby="skills-title">
+      <div class="card-head">
+        <div>
+          <h2 id="skills-title">Top skills</h2>
+          <p>Share of postings that mention each skill</p>
+        </div>
+        <div class="seg" role="group" aria-label="Which postings to show">
+          <button type="button" id="view-both" data-view="both" aria-pressed="true">Compare</button>
+          <button type="button" id="view-en" data-view="en" aria-pressed="false">English</button>
+          <button type="button" id="view-de" data-view="de" aria-pressed="false">German</button>
+        </div>
+      </div>
+      <div class="legend" id="legend">
+        <span><span class="dot en"></span>English postings</span>
+        <span><span class="dot de"></span>German postings</span>
+      </div>
+      <div class="skills" id="skills"></div>
+    </section>
+
+    <section class="card" aria-labelledby="gaps-title">
+      <div class="card-head">
+        <div>
+          <h2 id="gaps-title">English vs German ads</h2>
+          <p id="gap-sub">Percentage-point gap for each skill: the English share minus the German share.</p>
+        </div>
+      </div>
+      <svg class="diverge" id="diverge" role="img" aria-labelledby="gaps-title"></svg>
+    </section>
+  </div>
+
+  <div class="lower">
+    <section class="card" aria-labelledby="roles-title">
+      <div class="card-head"><div><h2 id="roles-title">Roles</h2><p>Number of postings per role, from the job title</p></div></div>
+      <div class="hbars" id="roles"></div>
+    </section>
+    <section class="card" aria-labelledby="levels-title">
+      <div class="card-head"><div><h2 id="levels-title">Seniority</h2><p>Most postings want experienced people. Working-student roles are the main way in.</p></div></div>
+      <div class="levels" id="levels"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <details>
+      <summary>Show all numbers as a table</summary>
+      <div class="tbl"><table id="table"><thead><tr><th>Skill</th><th>Jobs</th><th>All postings</th><th>English</th><th>German</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+
+  <footer>
+    <p>Source: Arbeitnow job board API, snapshot of <span id="foot-date"></span>. Skills found with keyword rules in English and German (for example “statistics” and “Statistik”). Software roles that only mention data in the title were removed.</p>
+    <p>One job board that leans towards tech companies, so treat the numbers as indicative. This page is rebuilt from the latest weekly snapshot; code and history on <a href="https://github.com/grey082005/data-jobs-germany" style="color:inherit">GitHub</a>.</p>
+  </footer>
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+// Filled in by build_dashboard.py from the latest snapshot in history/
+const DATA = {"date": "2026-10-03", "n_jobs": 162, "n_en": 88, "n_de": 73, "skills_searched": 37, "german_required_en": 3.4, "german_required_de": 65.8, "visa": 15, "skills": [{"name": "Python", "jobs": 79, "all": 48.8, "en": 48.9, "de": 49.3}, {"name": "SQL", "jobs": 74, "all": 45.7, "en": 44.3, "de": 47.9}, {"name": "Stakeholder management", "jobs": 69, "all": 42.6, "en": 52.3, "de": 31.5}, {"name": "Machine learning", "jobs": 59, "all": 36.4, "en": 47.7, "de": 21.9}, {"name": "ETL / data pipelines", "jobs": 48, "all": 29.6, "en": 26.1, "de": 34.2}, {"name": "Data visualisation", "jobs": 46, "all": 28.4, "en": 30.7, "de": 26.0}, {"name": "AI / LLMs", "jobs": 42, "all": 25.9, "en": 12.5, "de": 41.1}, {"name": "Data quality / governance", "jobs": 42, "all": 25.9, "en": 31.8, "de": 19.2}, {"name": "Statistics", "jobs": 39, "all": 24.1, "en": 31.8, "de": 15.1}, {"name": "Data modelling", "jobs": 38, "all": 23.5, "en": 17.0, "de": 31.5}, {"name": "AWS", "jobs": 37, "all": 22.8, "en": 26.1, "de": 17.8}, {"name": "Spark", "jobs": 32, "all": 19.8, "en": 14.8, "de": 24.7}, {"name": "Git", "jobs": 32, "all": 19.8, "en": 23.9, "de": 13.7}, {"name": "dbt", "jobs": 31, "all": 19.1, "en": 18.2, "de": 20.5}, {"name": "Communication / storytelling", "jobs": 29, "all": 17.9, "en": 17.0, "de": 19.2}, {"name": "Azure", "jobs": 27, "all": 16.7, "en": 8.0, "de": 27.4}, {"name": "A/B testing", "jobs": 26, "all": 16.0, "en": 29.5, "de": 0.0}, {"name": "Airflow", "jobs": 25, "all": 15.4, "en": 14.8, "de": 15.1}], "roles": [["Data Scientist / ML", 57], ["Data Engineer", 43], ["Data Analyst", 40], ["Business Analyst", 12], ["BI / Reporting", 10]], "levels": [["Senior / Lead", 81], ["Mid / not stated", 62], ["Junior", 5], ["Intern / Working student", 14]]};
+const SKILLS = DATA.skills;
+const ROLES = DATA.roles;
+const LEVELS = DATA.levels;
+const N = DATA.n_jobs;
+
+// Text and headline numbers
+(function () {
+  const pct = v => `${Math.round(v)}<small>%</small>`;
+  const date = new Date(DATA.date + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  const set = (id, html) => { document.getElementById(id).innerHTML = html; };
+  set("n-jobs", N); set("chip-date", `Snapshot ${date}`); set("foot-date", date);
+  set("chip-lang", `${DATA.n_en} English · ${DATA.n_de} German ads`);
+  set("chip-skills", `${DATA.skills_searched} skills searched in both languages`);
+  const [a, b] = [...SKILLS].sort((x, y) => y.all - x.all);
+  set("k1", pct(a.all)); set("k1-label", `ask for ${a.name}, the most-requested skill. ${b.name} follows at ${Math.round(b.all)}%.`);
+  set("k2", pct(DATA.german_required_en)); set("k2-pill", `${Math.round(DATA.german_required_de)}% of German ads do`);
+  const lv = Object.fromEntries(LEVELS);
+  const intern = lv["Intern / Working student"] || 0, junior = lv["Junior"] || 0;
+  set("k3", pct(100 * (intern + junior) / N)); set("k3-label", `are entry level: ${intern} internships or working-student roles and ${junior} junior roles`);
+  set("k4", pct(100 * DATA.visa / N)); set("k4-label", `offer visa sponsorship (${DATA.visa} of ${N} data roles)`);
+  const d = [...SKILLS].map(s => ({ name: s.name, d: s.en - s.de })).sort((x, y) => y.d - x.d);
+  const list = xs => xs.length > 1 ? `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}` : xs[0];
+  const GENERIC = ["Machine learning", "Deep learning", "Statistics", "Stakeholder management", "Data quality / governance", "Data modelling",
+    "Data visualisation", "Forecasting", "Communication / storytelling", "A/B testing", "ETL / data pipelines", "Agile / Scrum"];
+  const short = n => {
+    const t = n.replace("Data quality / governance", "Data quality").replace("Communication / storytelling", "Communication").replace("ETL / data pipelines", "ETL pipelines");
+    return GENERIC.includes(n) ? t.charAt(0).toLowerCase() + t.slice(1) : t;   // tool names keep their capitals
+  };
+  const enTop = d.filter(x => x.d >= 5).slice(0, 3).map(x => short(x.name));
+  const deTop = d.filter(x => x.d <= -5).reverse().slice(0, 3).map(x => short(x.name));
+  if (enTop.length && deTop.length) set("gap-sub", `Percentage-point gap for each skill: the English share minus the German share. English ads ask more for ${list(enTop)}; German ads for ${list(deTop)}.`);
+})();
+
+const MAX = Math.max(60, ...SKILLS.map(s => Math.max(s.en, s.de)) ); // shared scale for the skill bars, in %
+const fmt = v => `${Math.round(v)}%`;
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+// Skill chart
+const skillsBox = document.getElementById("skills");
+const rows = SKILLS.map(s => {
+  const row = el("div", "row");
+  row.tabIndex = 0;
+  row.append(el("div", "name", s.name));
+  const bars = el("div", "bars");
+  const en = el("div", "bar en", `<i></i><span>${fmt(s.en)}</span>`);
+  const de = el("div", "bar de", `<i></i><span>${fmt(s.de)}</span>`);
+  bars.append(en, de);
+  row.append(bars);
+  row.title = "";
+  skillsBox.append(row);
+  return { s, row, en, de };
+});
+
+let view = "both";
+function render() {
+  const order = [...rows].sort((a, b) => view === "both" ? b.s.all - a.s.all : b.s[view] - a.s[view]);
+  order.forEach(r => skillsBox.append(r.row));
+  skillsBox.classList.toggle("single", view !== "both");
+  document.getElementById("legend").hidden = view !== "both";
+  rows.forEach(({ s, en, de }) => {
+    en.hidden = view === "de";
+    de.hidden = view === "en";
+    en.firstChild.style.width = `${(s.en / MAX) * 88}%`;
+    de.firstChild.style.width = `${(s.de / MAX) * 88}%`;
+  });
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  view = b.dataset.view;
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  render();
+}));
+requestAnimationFrame(render);
+
+// Tooltip
+const tip = document.getElementById("tip");
+function showTip(r, x, y) {
+  const { s } = r;
+  const diff = s.en - s.de;
+  const lean = Math.abs(diff) < 2 ? "About the same in both" : `${Math.abs(diff).toFixed(0)} points more in ${diff > 0 ? "English" : "German"} postings`;
+  tip.innerHTML = `<b>${s.name}</b><br><span class="dot en"></span>English ${fmt(s.en)} · <span class="dot de"></span>German ${fmt(s.de)}<br>${s.jobs} of ${N} jobs · ${lean}`;
+  const w = 240, pad = 12;
+  tip.style.left = `${Math.min(x + pad, window.innerWidth - w - pad)}px`;
+  tip.style.top = `${y + pad}px`;
+  tip.classList.add("on");
+}
+rows.forEach(r => {
+  r.row.addEventListener("mousemove", e => showTip(r, e.clientX, e.clientY));
+  r.row.addEventListener("mouseleave", () => tip.classList.remove("on"));
+  r.row.addEventListener("focus", () => { const b = r.row.getBoundingClientRect(); showTip(r, b.left + 40, b.bottom - 6); });
+  r.row.addEventListener("blur", () => tip.classList.remove("on"));
+});
+
+// Diverging chart: every skill, English share minus German share
+(function () {
+  const svg = document.getElementById("diverge");
+  const data = [...SKILLS].map(s => ({ ...s, d: s.en - s.de })).sort((a, b) => b.d - a.d);
+  let lastW = 0;
+  function draw() {
+  const W = Math.round(svg.clientWidth || svg.parentElement.clientWidth || 440);   // draw at real pixel size, so text stays readable
+  if (W === lastW) return; lastW = W;
+  const narrow = W < 360;
+  const LABEL = narrow ? 118 : 172, PAD_R = 30, ROW = 33, TOP = 50;
+  const x0 = LABEL + 14, x1 = W - PAD_R, mid = (x0 + x1) / 2, R = 30;   // scale: ±30 points
+  const x = v => mid + (v / R) * (x1 - mid);
+  const H = TOP + data.length * ROW + 6;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  let out = "";
+  out += `<text class="side" x="${mid - 8}" y="13" text-anchor="end"><tspan class="d-dot-de">●</tspan> German ads</text>`;
+  out += `<text class="side" x="${mid + 8}" y="13" text-anchor="start">English ads <tspan class="d-dot-en">●</tspan></text>`;
+  [-30, -15, 0, 15, 30].forEach(t => {
+    out += `<line class="${t === 0 ? "zero" : "grid"}" x1="${x(t)}" x2="${x(t)}" y1="${TOP - 8}" y2="${H - 4}"/>`;
+    out += `<text class="tick" x="${x(t)}" y="${TOP - 14}" text-anchor="middle">${t === 0 ? "same" : Math.abs(t)}</text>`;
+  });
+  data.forEach((s, i) => {
+    const cy = TOP + i * ROW + ROW / 2;
+    out += `<rect class="hit" data-i="${i}" tabindex="0" x="0" y="${cy - ROW / 2 + 1}" width="${W}" height="${ROW - 2}" rx="6"><title>${s.name}</title></rect>`;
+    out += `<text class="lbl" x="0" y="${cy + 4}">${narrow ? s.name.replace("Communication / storytelling", "Communication").replace("Stakeholder management", "Stakeholders").replace("Data quality / governance", "Data quality").replace("ETL / data pipelines", "ETL / pipelines").replace("Data visualisation", "Visualisation") : s.name.replace("Communication / storytelling", "Communication")}</text>`;
+    const v = Math.max(-R, Math.min(R, s.d)), xv = x(v), h = 11, r = 3;
+    if (Math.round(s.d) !== 0) {
+      const left = Math.min(mid, xv), w = Math.abs(xv - mid);
+      // rounded only on the outer end, flat against the centre line
+      const path = s.d > 0
+        ? `M${left},${cy - h / 2} h${w - r} q${r},0 ${r},${r} v${h - 2 * r} q0,${r} -${r},${r} h-${w - r} z`
+        : `M${left + w},${cy - h / 2} h-${w - r} q-${r},0 -${r},${r} v${h - 2 * r} q0,${r} ${r},${r} h${w - r} z`;
+      out += `<path class="${s.d > 0 ? "b-en" : "b-de"}" d="${path}" pointer-events="none"/>`;
+    }
+    const rd = Math.round(s.d), sign = rd > 0 ? "+" : rd < 0 ? "−" : "";
+    const tx = s.d >= 0 ? xv + 5 : xv - 5;
+    out += `<text class="val" x="${tx}" y="${cy + 4}" text-anchor="${s.d >= 0 ? "start" : "end"}" pointer-events="none">${sign}${Math.abs(rd)}</text>`;
+  });
+  svg.innerHTML = out;
+  svg.querySelectorAll(".hit").forEach(h => {
+    const s = data[+h.dataset.i];
+    const r = rows.find(r => r.s.name === s.name);
+    h.addEventListener("mousemove", e => showTip(r, e.clientX, e.clientY));
+    h.addEventListener("mouseleave", () => tip.classList.remove("on"));
+    h.addEventListener("focus", () => { const b = h.getBoundingClientRect(); showTip(r, b.left + 40, b.bottom - 6); });
+    h.addEventListener("blur", () => tip.classList.remove("on"));
+  });
+  }
+  draw();
+  if (window.ResizeObserver) new ResizeObserver(draw).observe(svg);
+})();
+
+// Roles
+const rolesBox = document.getElementById("roles");
+const roleMax = Math.max(...ROLES.map(r => r[1]));
+ROLES.forEach(([name, n]) => {
+  rolesBox.append(el("div", "hbar", `<span>${name}</span><div class="t"><i style="width:${(n / roleMax) * 100}%"></i></div><b>${n}</b>`));
+});
+
+// Seniority: career order, entry levels highlighted and bracketed
+(function () {
+  const box = document.getElementById("levels");
+  const total = LEVELS.reduce((a, l) => a + l[1], 0);
+  const max = Math.max(...LEVELS.map(l => l[1]));
+  const order = ["Intern / Working student", "Junior", "Mid / not stated", "Senior / Lead"];
+  const entry = ["Intern / Working student", "Junior"];
+  const byName = Object.fromEntries(LEVELS.map(l => [l[0], l[1]]));
+  const row = name => {
+    const n = byName[name];
+    return `<div class="lvl${entry.includes(name) ? " hi" : ""}"><span>${name}</span><div class="t"><i style="width:${(n / max) * 100}%"></i></div><b>${n}</b><span class="pct">${Math.round((n / total) * 100)}%</span></div>`;
+  };
+  const entryN = entry.reduce((a, k) => a + byName[k], 0);
+  box.innerHTML =
+    `<div class="lvl-group entry"><div class="lvl-tag">Open to students and graduates: <b>${entryN} jobs, ${Math.round((entryN / total) * 100)}%</b></div>${entry.map(row).join("")}</div>` +
+    `<div class="lvl-group">${order.filter(k => !entry.includes(k)).map(row).join("")}</div>`;
+})();
+
+// Table
+const tbody = document.querySelector("#table tbody");
+SKILLS.forEach(s => tbody.append(el("tr", "", `<td>${s.name}</td><td>${s.jobs}</td><td>${s.all.toFixed(1)}%</td><td>${s.en.toFixed(1)}%</td><td>${s.de.toFixed(1)}%</td>`)));
+</script>
+
+</body>
+</html>
