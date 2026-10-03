@@ -273,7 +273,7 @@ const N = DATA.n_jobs;
     "Data visualisation", "Forecasting", "Communication / storytelling", "A/B testing", "ETL / data pipelines", "Agile / Scrum"];
   const short = n => {
     const t = n.replace("Data quality / governance", "Data quality").replace("Communication / storytelling", "Communication").replace("ETL / data pipelines", "ETL pipelines");
-    return GENERIC.includes(n) ? t.charAt(0).toLowerCase() + t.slice(1) : t;   // tool names keep their capitals
+    return GENERIC.includes(n) && /^[A-Z][a-z]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t;   // tool names and "A/B" keep their capitals
   };
   const enTop = d.filter(x => x.d >= 5).slice(0, 3).map(x => short(x.name));
   const deTop = d.filter(x => x.d <= -5).reverse().slice(0, 3).map(x => short(x.name));
