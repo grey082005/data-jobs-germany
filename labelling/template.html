@@ -88,6 +88,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px
     <div class="dots" id="dots"></div>
     <div class="nav">
       <button id="download" type="button" class="primary">Download labels.csv</button>
+      <button id="reset" type="button">Start over (clear all ticks)</button>
     </div>
     <p class="foot">Sample drawn from __SOURCE__. Save labels.csv into the <code>labelling</code> folder of the project.</p>
   </section>
@@ -171,6 +172,12 @@ document.getElementById("download").onclick = () => {
   const blob = new Blob(["﻿" + rows.join("\n")], { type: "text/csv;charset=utf-8" });
   const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = "labels.csv";
   document.body.append(link); link.click(); link.remove();
+};
+
+document.getElementById("reset").onclick = () => {
+  const btn = document.getElementById("reset");
+  if (!btn.dataset.armed) { btn.dataset.armed = "1"; btn.textContent = "Click again to clear every tick and note"; return; }
+  state = {}; save(); i = 0; delete btn.dataset.armed; btn.textContent = "Start over (clear all ticks)"; render();
 };
 
 render();
