@@ -1,4 +1,5 @@
-# Runs the job-market tracker every Monday and saves the new numbers to the history folder.
+# Runs the job-market tracker every Monday: tests the rules, collects new postings,
+# saves the new numbers to history/ and rebuilds the public dashboard (docs/index.html).
 name: Weekly job market update
 
 on:
@@ -24,11 +25,17 @@ jobs:
       - name: Install packages
         run: pip install -r requirements.txt
 
+      - name: Check the text rules still work
+        run: python -m pytest -q tests
+
       - name: Run the pipeline
         env:
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
         run: python pipeline.py
+
+      - name: Rebuild the public dashboard
+        run: python build_dashboard.py
 
       - name: Keep this week's raw data for 90 days (private, downloadable from the run page)
         uses: actions/upload-artifact@v4
@@ -41,6 +48,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add history/
+          git add history/ docs/index.html
           git diff --cached --quiet || git commit -m "Weekly update: $(date -u +%Y-%m-%d)"
           git push

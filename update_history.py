@@ -81,6 +81,8 @@ def main() -> None:
     }
     for role, count in data_jobs["role"].value_counts().items():
         row[f"role: {role}"] = int(count)
+    for level, count in data_jobs["level"].value_counts().items():
+        row[f"level: {level}"] = int(count)
 
     # Adzuna numbers, if Adzuna ran on the same day
     adzuna_path = f"data/jobs_raw_{date}.csv"
