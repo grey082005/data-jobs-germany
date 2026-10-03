@@ -1,0 +1,11 @@
+# Secret keys
+.env
+
+# Raw data (large, and re-downloadable)
+data/
+
+# Python clutter
+__pycache__/
+*.pyc
+.venv/
+venv/
