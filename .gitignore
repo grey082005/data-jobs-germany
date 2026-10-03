@@ -12,3 +12,4 @@ venv/
 
 # Labelling page contains full ad texts: keep it local
 labelling/label_tool.html
+labelling/disagreements.csv
