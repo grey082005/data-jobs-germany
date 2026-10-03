@@ -6,7 +6,7 @@ A weekly, automated tracker of data analyst, data scientist, data engineer and B
 
 **[View the interactive dashboard](https://claude.ai/artifact/2QBbehWbNZV9rxpTpNo6sf)**
 
-![Top skills in English vs German data job postings](docs/top_skills.png)
+![Dashboard: top skills, language requirements, roles and seniority in German data job postings](docs/dashboard.png)
 
 ## Key findings (first snapshot, 3 Oct 2026, 173 data roles)
 
